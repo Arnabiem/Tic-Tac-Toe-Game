@@ -1,7 +1,7 @@
 console.log ("Welcome to TicTacToe");
-let music=new Audio("music.mp3");
-let audioturn=new Audio("turn.wav");
-let gameover=new Audio("gameover.wav");
+let music=new Audio("gamemusic.wav");
+let audioturn=new Audio("turn2.wav");
+let gameover=new Audio("gamewin.wav");
 let turn="X";
 let isgameover=false;
 // turn func
@@ -9,14 +9,15 @@ const changeturn=()=>{
       return turn==="X"?"O":"X";
 }
 // win func
+
 const checkWin=()=>{
     let boxtext=document.getElementsByClassName("boxtext");
     let wins=[
         [0,1,2,0,6,0],
         [0,3,6,-9.9,15,90],
-        [1,4,7,0,15,90],
+        [1,4,7,0.2,15,90],
         [2,5,8,10.2,15,90],     
-        [3,4,5,0,15,0],
+        [3,4,5,0,16,0],
         [6,7,8,0,26,0],
         [2,4,6,0.1,15,135],
         [0,4,8,0.1,15,45],
@@ -28,7 +29,7 @@ const checkWin=()=>{
      document.querySelector('.imgbox').getElementsByTagName('img')[0].style.display="inline";
      document.querySelector(".line").style.transform=`translate(${e[3]}vw , ${e[4]}vw) rotate(${e[5]}deg)`;
      document.querySelector(".line").style.width="30vw";  
-    // / gameover.play();
+     gameover.play();
             }
         })
     
@@ -50,6 +51,7 @@ Array.from(boxes).forEach(element=>{
     })
 })
 // reset button
+
 reset.addEventListener('click',()=>{
     let boxtext=document.querySelectorAll('.boxtext');
     Array.from(boxtext).forEach(element=>{
